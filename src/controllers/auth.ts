@@ -25,6 +25,10 @@ export const login = async (req: LoginRequest, res: Response) => {
         });
         res.status(200).end();
     }
+
+    setTimeout(async () => {
+        // aggregate all the queries for this user
+    }, (1000 * 60 * 10));
 };
 
 interface ReportStatus extends Request {
