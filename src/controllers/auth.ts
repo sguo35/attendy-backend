@@ -41,3 +41,5 @@ export const reportStatus = async (req: ReportStatus, res: Response) => {
         });
     }));
 };
+
+// export const aggregateResults = null;
