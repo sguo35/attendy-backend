@@ -53,12 +53,12 @@ const userSchema = new mongoose.Schema({
 /**
  * Password hash middleware.
  */
-userSchema.pre("save", function save(next) {
+userSchema.pre("save", function save(next: any) {
   const user = this;
   if (!user.isModified("password")) { return next(); }
-  bcrypt.genSalt(10, (err, salt) => {
+  bcrypt.genSalt(10, (err: any, salt: any) => {
     if (err) { return next(err); }
-    bcrypt.hash(user.password, salt, undefined, (err: mongoose.Error, hash) => {
+    bcrypt.hash(user.password, salt, undefined, (err: mongoose.Error, hash: any) => {
       if (err) { return next(err); }
       user.password = hash;
       next();
