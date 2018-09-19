@@ -30,16 +30,15 @@ export const login = async (req: LoginRequest, res: Response) => {
 interface ReportStatus extends Request {
     body: {
         email: string;
-        detectedEmails: Array<string>;
+        detectedEmail: Array<string>;
     };
 }
 export const reportStatus = async (req: ReportStatus, res: Response) => {
-    Promise.all(req.body.detectedEmails.map(async (email) => {
-        await ReportStatus.create({
-            email: email,
-            reporter: req.body.email
-        });
-    }));
+    await ReportStatus.create({
+        email: req.body.detectedEmail,
+        reporter: req.body.email
+    });
+    res.status(200).end();
 };
 
 // export const aggregateResults = null;
