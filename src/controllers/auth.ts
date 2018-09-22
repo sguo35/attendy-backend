@@ -50,9 +50,9 @@ const aggregateReports = async (email: string) => {
     console.log(`Aggregating reports for ${email} at ${new Date()}`);
     const beforeReports = await ReportStatus.find({
         email: email,
-        createdAt: {
-            $gt: (new Date(Date.now() - 1000 * 60 * 10)).toISOString(),
-            $lt: (new Date(Date.now())).toISOString()
+        "created_on": {
+            $gt: new Date(Date.now() - 1000 * 60 * 10),
+            $lt: new Date(Date.now())
         }
     });
     console.log("before");
@@ -60,8 +60,8 @@ const aggregateReports = async (email: string) => {
 
     const afterReports = await ReportStatus.find({
         email: email,
-        createdAt: {
-            $gt: (new Date(Date.now() - 1000 * 60 * 30)).toISOString(),
+        "created_on": {
+            $gt: new Date(Date.now() - 1000 * 60 * 30),
         }
     });
     console.log("after");
