@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { default as Account, AccountModel } from "../models/Account";
 import { default as ReportStatus } from "../models/ReportStatus";
 import { default as AttendanceEntry, AttendanceEntryModel } from "../models/AttendanceEntry";
+import { default as Login, LoginModel } from "../models/Login";
 
 interface LoginRequest extends Request {
     body: {
@@ -19,6 +20,18 @@ export const login = async (req: LoginRequest, res: Response) => {
         setTimeout(async () => {
             await sendDailyEmail();
         }, 1000 * 60 * 160);
+    }
+
+    const login = await Login.findOne({
+        email: req.body.email,
+        createdAt: {
+            $gt: new Date(Date.now() - 1000 * 60 * 60 * 4)
+        }
+    });
+
+    if (login) {
+        res.status(403).end();
+        return;
     }
     const account = await Account.findOne({
         email: req.body.email,
