@@ -16,7 +16,7 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@types/async@^2.0.45":
+"@types/async@^2.0.49":
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
 
@@ -34,11 +34,11 @@
   version "0.0.30"
   resolved "https://registry.yarnpkg.com/@types/bcrypt-nodejs/-/bcrypt-nodejs-0.0.30.tgz#4cdd96b49293b3932122e4b7e29543e35e6bae58"
 
-"@types/bluebird@^3.5.20":
+"@types/bluebird@*", "@types/bluebird@^3.5.24":
   version "3.5.24"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.24.tgz#11f76812531c14f793b8ecbf1de96f672905de8a"
 
-"@types/body-parser@*", "@types/body-parser@^1.16.8":
+"@types/body-parser@*", "@types/body-parser@^1.17.0":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.17.0.tgz#9f5c9d9bd04bb54be32d5eb9fc0d8c974e6cf58c"
   dependencies:
@@ -55,20 +55,30 @@
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.1.tgz#9794c69c8385d0192acc471a540d1f8e0d16218a"
 
-"@types/compression@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@types/compression/-/compression-0.0.35.tgz#7673a9c4b075e5194ada8c5938291015652a21e1"
+"@types/chai@^4.1.5":
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.5.tgz#6163dc60078d215ec46186dc76062ef6ed68d39c"
+
+"@types/compression@^0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@types/compression/-/compression-0.0.36.tgz#7646602ffbfc43ea48a8bf0b2f1d5e5f9d75c0d0"
   dependencies:
     "@types/express" "*"
 
-"@types/connect-mongo@^0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@types/connect-mongo/-/connect-mongo-0.0.35.tgz#f4b20ddc879b6a9de968b2a765d96b35318784e1"
+"@types/connect-flash@*":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@types/connect-flash/-/connect-flash-0.0.34.tgz#ec7323d1636bc8d9b7c02c3a0a5d337602b671f9"
+  dependencies:
+    "@types/express" "*"
+
+"@types/connect-mongo@^0.0.39":
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/@types/connect-mongo/-/connect-mongo-0.0.39.tgz#802ac2bd41e88e9c45de158007a581e7cb922765"
   dependencies:
     "@types/express" "*"
     "@types/express-session" "*"
     "@types/mongodb" "^2"
-    "@types/mongoose" "*"
+    "@types/mongoose" "^4"
 
 "@types/connect@*":
   version "3.4.32"
@@ -80,7 +90,7 @@
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.0.tgz#4b7daf2c51696cfc70b942c11690528229d1a1ce"
 
-"@types/dotenv@^4.0.2":
+"@types/dotenv@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-4.0.3.tgz#ebcfc40da7bc0728b705945b7db48485ec5b4b67"
   dependencies:
@@ -96,6 +106,13 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
 
+"@types/express-flash@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@types/express-flash/-/express-flash-0.0.0.tgz#758f0dff051f58001c31f41815c435ed0ae90ec0"
+  dependencies:
+    "@types/connect-flash" "*"
+    "@types/express" "*"
+
 "@types/express-serve-static-core@*":
   version "4.16.0"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.16.0.tgz#fdfe777594ddc1fe8eb8eccce52e261b496e43e7"
@@ -104,7 +121,7 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express-session@*", "@types/express-session@^1.15.8":
+"@types/express-session@*", "@types/express-session@^1.15.11":
   version "1.15.11"
   resolved "https://registry.yarnpkg.com/@types/express-session/-/express-session-1.15.11.tgz#49bca7a8fb5c00402907e8ec0d3546ee28de2c41"
   dependencies:
@@ -112,7 +129,13 @@
     "@types/express" "*"
     "@types/node" "*"
 
-"@types/express@*", "@types/express@^4.11.1":
+"@types/express-validator@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/express-validator/-/express-validator-3.0.0.tgz#e6f3cab842e5ae376a1cfa11295202ec380b68d1"
+  dependencies:
+    express-validator "*"
+
+"@types/express@*", "@types/express@^4.16.0":
   version "4.16.0"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.16.0.tgz#6d8bc42ccaa6f35cf29a2b7c3333cb47b5a32a19"
   dependencies:
@@ -142,15 +165,15 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/jest@^22.1.3":
-  version "22.2.3"
-  resolved "http://registry.npmjs.org/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
+"@types/jest@^23.3.2":
+  version "23.3.2"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.2.tgz#07b90f6adf75d42c34230c026a2529e56c249dbb"
 
 "@types/jquery@^3.2.17":
   version "3.3.9"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.9.tgz#91f2aaf5c1e91fd79598fc00ecb4504d78b51fd7"
 
-"@types/lodash@^4.14.91":
+"@types/lodash@^4.14.116":
   version "4.14.116"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.116.tgz#5ccf215653e3e8c786a58390751033a9adca0eb9"
 
@@ -184,17 +207,17 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/mongoose@*":
-  version "5.2.16"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.2.16.tgz#33b0ff8429e63f100e2b68a12e7856ad273b9e9b"
+"@types/mongoose@^4":
+  version "4.7.39"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.39.tgz#08581b757922ebc7f69ccd55f5e4ffe6b06d172d"
   dependencies:
     "@types/events" "*"
     "@types/mongodb" "*"
     "@types/node" "*"
 
-"@types/mongoose@^4.7.34":
-  version "4.7.39"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.39.tgz#08581b757922ebc7f69ccd55f5e4ffe6b06d172d"
+"@types/mongoose@^5.2.17":
+  version "5.2.17"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.2.17.tgz#cea448667810f4e27cd1e27067ee2e534018d227"
   dependencies:
     "@types/events" "*"
     "@types/mongodb" "*"
@@ -206,6 +229,12 @@
   dependencies:
     "@types/express" "*"
 
+"@types/node-sass@^3.10.32":
+  version "3.10.32"
+  resolved "https://registry.yarnpkg.com/@types/node-sass/-/node-sass-3.10.32.tgz#b296cce7144ffab77b84090caad4f1e4bbea8e09"
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*":
   version "10.10.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.10.1.tgz#d5c96ca246a418404914d180b7fdd625ad18eca6"
@@ -214,21 +243,21 @@
   version "9.6.31"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.31.tgz#4d1722987f8d808b4c194dceb8c213bd92f028e5"
 
-"@types/nodemailer@^4.3.4":
+"@types/nodemailer@^4.6.5":
   version "4.6.5"
   resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-4.6.5.tgz#8bb799202f8cfcc8200a1c1627f6a8a74fe71da6"
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/passport-facebook@^2.1.7":
+"@types/passport-facebook@^2.1.8":
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/@types/passport-facebook/-/passport-facebook-2.1.8.tgz#9d6ea5991e7267f0394cecb46212e189f624c81d"
   dependencies:
     "@types/express" "*"
     "@types/passport" "*"
 
-"@types/passport-local@^1.0.32":
+"@types/passport-local@^1.0.33":
   version "1.0.33"
   resolved "https://registry.yarnpkg.com/@types/passport-local/-/passport-local-1.0.33.tgz#d245b60c5b801cb3aeca1ffab557d5fe1534260d"
   dependencies:
@@ -243,17 +272,28 @@
     "@types/express" "*"
     "@types/passport" "*"
 
-"@types/passport@*", "@types/passport@^0.4.3":
+"@types/passport@*", "@types/passport@^0.4.6":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@types/passport/-/passport-0.4.6.tgz#1c6a1a3fd105e9354816e179c5c9cd13852864d1"
   dependencies:
     "@types/express" "*"
 
+"@types/pug@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@types/pug/-/pug-2.0.4.tgz#8772fcd0418e3cd2cc171555d73007415051f4b2"
+
 "@types/range-parser@*":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.2.tgz#fa8e1ad1d474688a757140c91de6dace6f4abc8d"
 
-"@types/request@^2.47.0":
+"@types/request-promise@^4.1.42":
+  version "4.1.42"
+  resolved "https://registry.yarnpkg.com/@types/request-promise/-/request-promise-4.1.42.tgz#a70a6777429531e60ed09faa077ead9b995204cd"
+  dependencies:
+    "@types/bluebird" "*"
+    "@types/request" "*"
+
+"@types/request@*", "@types/request@^2.47.1":
   version "2.47.1"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.47.1.tgz#25410d3afbdac04c91a94ad9efc9824100735824"
   dependencies:
@@ -269,9 +309,9 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/shelljs@^0.7.8":
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.7.9.tgz#3abecb72d9cad9cd4b0e7cb86ed10a97d93ba602"
+"@types/shelljs@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.8.0.tgz#0caa56b68baae4f68f44e0dd666ab30b098e3632"
   dependencies:
     "@types/glob" "*"
     "@types/node" "*"
@@ -283,7 +323,7 @@
     "@types/cookiejar" "*"
     "@types/node" "*"
 
-"@types/supertest@^2.0.4":
+"@types/supertest@^2.0.6":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/supertest/-/supertest-2.0.6.tgz#a0665350c0e36315e1bccdf4785f2b76fcb71b6b"
   dependencies:
@@ -293,7 +333,13 @@
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-2.3.3.tgz#7f226d67d654ec9070e755f46daebf014628e9d9"
 
-"@types/winston@^2.3.7":
+"@types/typescript@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/typescript/-/typescript-2.0.0.tgz#c433539c98bae28682b307eaa7a0fd2115b83c28"
+  dependencies:
+    typescript "*"
+
+"@types/winston@^2.4.4":
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@types/winston/-/winston-2.4.4.tgz#48cc744b7b42fad74b9a2e8490e0112bd9a3d08d"
   dependencies:
@@ -1305,6 +1351,29 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
+csv-generate@^2.0.2:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/csv-generate/-/csv-generate-2.1.0.tgz#ba4bea4aa06858eae78fe16a403ef20e7cde6374"
+
+csv-parse@^2.4.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-2.5.0.tgz#65748997ecc3719c594622db1b9ea0e2eb7d56bb"
+
+csv-stringify@^3.0.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-3.1.1.tgz#3a4e180a84f9c45a6a0a0401c1b41b315b9131f0"
+  dependencies:
+    lodash.get "~4.4.2"
+
+csv@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/csv/-/csv-3.1.0.tgz#91ad8625e294bf37a5b366b84d01aa40b2d20f15"
+  dependencies:
+    csv-generate "^2.0.2"
+    csv-parse "^2.4.0"
+    csv-stringify "^3.0.0"
+    stream-transform "^1.0.2"
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -1660,6 +1729,13 @@ express-session@^1.15.6:
     parseurl "~1.3.2"
     uid-safe "~2.1.5"
     utils-merge "1.0.1"
+
+express-validator@*:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/express-validator/-/express-validator-5.3.0.tgz#18a4e4a6e6410e3b9d492fb4ffcb4556fec51806"
+  dependencies:
+    lodash "^4.17.10"
+    validator "^10.4.0"
 
 express-validator@^4.3.0:
   version "4.3.0"
@@ -3061,7 +3137,7 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
-lodash.get@4.4.2:
+lodash.get@4.4.2, lodash.get@~4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
@@ -3486,7 +3562,7 @@ node-sass@^4.7.2:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
-nodemailer@^4.4.1:
+nodemailer@^4.6.8:
   version "4.6.8"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.6.8.tgz#f82fb407828bf2e76d92acc34b823d83e774f89c"
 
@@ -4711,6 +4787,10 @@ stream-combiner@^0.2.2:
     duplexer "~0.1.1"
     through "~2.3.4"
 
+stream-transform@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/stream-transform/-/stream-transform-1.0.2.tgz#47de4d15fbc29b7e2a7e54d25e99538876f114c1"
+
 string-length@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/string-length/-/string-length-2.0.0.tgz#d40dbb686a3ace960c1cffca562bf2c45f8363ed"
@@ -5049,6 +5129,10 @@ type-is@~1.6.15, type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
+typescript@*:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.3.tgz#4853b3e275ecdaa27f78fda46dc273a7eb7fc1c8"
+
 typescript@^2.7.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
@@ -5181,6 +5265,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validator@^10.4.0:
+  version "10.7.1"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.7.1.tgz#dd4cc750c2134ce4a15a2acfc7b233669d659c5b"
 
 validator@~8.2.0:
   version "8.2.0"

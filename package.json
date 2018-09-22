@@ -9,7 +9,7 @@
   "author": "Bowden Kelly",
   "license": "MIT",
   "scripts": {
-    "start": "npm run serve",
+    "start": "ts-node src/server.ts",
     "build": "npm run build-sass && npm run build-ts && npm run tslint && npm run copy-static-assets",
     "serve": "node dist/server.js",
     "watch-node": "nodemon dist/server.js",
@@ -78,7 +78,7 @@
     "@types/node-sass": "^3.10.32",
     "@types/nodemailer": "^4.6.5",
     "@types/passport": "^0.4.6",
-    "@types/passport-facebook": "^2.1.7",
+    "@types/passport-facebook": "^2.1.8",
     "@types/passport-local": "^1.0.33",
     "@types/pug": "^2.0.4",
     "@types/request": "^2.47.1",
