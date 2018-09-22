@@ -25,7 +25,7 @@ export const login = async (req: LoginRequest, res: Response) => {
     const login = await Login.findOne({
         email: req.body.email,
         createdAt: {
-            $gt: new Date(Date.now() - 1000 * 60 * 60 * 4)
+            $gt: new Date(Date.now() - 1000)
         }
     });
 
