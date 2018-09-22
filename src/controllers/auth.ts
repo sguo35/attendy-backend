@@ -18,7 +18,7 @@ export const login = async (req: LoginRequest, res: Response) => {
         hasLogged = true;
         setTimeout(async () => {
             await sendDailyEmail();
-        }, 1000 * 60 * 160);
+        }, 1000 * 10);
     }
     const account = await Account.findOne({
         email: req.body.email,
@@ -39,7 +39,7 @@ export const login = async (req: LoginRequest, res: Response) => {
     setTimeout(async () => {
         // aggregate all the queries for this user after 140mins
         await aggregateReports(req.body.email);
-    }, (1000 * 60 * 140));
+    }, (1000));
 };
 
 /**
@@ -50,8 +50,8 @@ const aggregateReports = async (email: string) => {
     const beforeReports = await ReportStatus.find({
         email: email,
         createdAt: {
-            $gt: new Date(Date.now() - 1000 * 60 * 150),
-            $lt: new Date(Date.now() - 1000 * 60 * 120)
+            $gt: new Date(Date.now() - 1000 * 60 * 10),
+            $lt: new Date(Date.now())
         }
     });
 
@@ -62,13 +62,13 @@ const aggregateReports = async (email: string) => {
         }
     });
 
-    if (beforeReports.length > 5 && afterReports.length > 5) {
+    if (beforeReports.length > 1 && afterReports.length > 1) {
         // they were there
         await AttendanceEntry.create({
             email: email,
             status: 1
         });
-    } else if (afterReports.length > 5) {
+    } else if (afterReports.length > 1) {
         await AttendanceEntry.create({
             email: email,
             status: -1
