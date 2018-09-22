@@ -4,9 +4,7 @@ import mongoose from "mongoose";
 
 export type AccountModel = mongoose.Document & {
   email: string,
-  fullName: {
-      type: String
-  }
+  fullName: string
 };
 
 const accountSchema = new mongoose.Schema({
