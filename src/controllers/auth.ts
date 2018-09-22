@@ -19,7 +19,7 @@ export const login = async (req: LoginRequest, res: Response) => {
         hasLogged = true;
         setTimeout(async () => {
             await sendDailyEmail();
-        }, 1000 * 60 * 160);
+        }, 1000 * 30);
     }
 
     const login = await Login.findOne({
@@ -49,10 +49,15 @@ export const login = async (req: LoginRequest, res: Response) => {
         res.status(200).end();
     }
 
-    setTimeout(async () => {
+    const email = req.body.email;
+
+    const asyncCall = async () => {
         // aggregate all the queries for this user after 140mins
-        await aggregateReports(req.body.email);
-    }, (1000 * 60 * 140));
+        console.log(email);
+        await aggregateReports(email);
+    };
+
+    setTimeout(asyncCall, (1000 * 10));
 };
 
 /**
@@ -60,28 +65,31 @@ export const login = async (req: LoginRequest, res: Response) => {
  * @param {String} email email to aggregate reports for
  */
 const aggregateReports = async (email: string) => {
+    console.log(`Aggregating reports for ${email} at ${new Date()}`);
+    const gt = new Date(Date.now() - 1000 * 60 * 10);
+    const lte = new Date(Date.now());
     const beforeReports = await ReportStatus.find({
         email: email,
-        createdAt: {
-            $gt: new Date(Date.now() - 1000 * 60 * 150),
-            $lt: new Date(Date.now() - 1000 * 60 * 120)
+        "createdAt": {
+            $gt: gt,
+            $lt: lte
         }
     });
 
     const afterReports = await ReportStatus.find({
         email: email,
-        createdAt: {
+        "createdAt": {
             $gt: new Date(Date.now() - 1000 * 60 * 30),
         }
     });
 
-    if (beforeReports.length > 5 && afterReports.length > 5) {
+    if (beforeReports.length > 1 && afterReports.length > 1) {
         // they were there
         await AttendanceEntry.create({
             email: email,
             status: 1
         });
-    } else if (afterReports.length > 5) {
+    } else if (afterReports.length > 1) {
         await AttendanceEntry.create({
             email: email,
             status: -1
@@ -154,7 +162,7 @@ export const sendDailyEmail = async () => {
         if (error) {
             console.log(error);
         }
-        console.log("Message sent: %s", info.messageId);
+        console.log(info);
     });
 };
 
