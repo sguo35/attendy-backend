@@ -47,6 +47,7 @@ export const login = async (req: LoginRequest, res: Response) => {
  * @param {String} email email to aggregate reports for
  */
 const aggregateReports = async (email: string) => {
+    console.log(`Aggregating reports for ${email} at ${new Date()}`);
     const beforeReports = await ReportStatus.find({
         email: email,
         createdAt: {
@@ -54,6 +55,8 @@ const aggregateReports = async (email: string) => {
             $lt: new Date(Date.now())
         }
     });
+    console.log("before");
+    console.log(beforeReports);
 
     const afterReports = await ReportStatus.find({
         email: email,
@@ -61,6 +64,8 @@ const aggregateReports = async (email: string) => {
             $gt: new Date(Date.now() - 1000 * 60 * 30),
         }
     });
+    console.log("after");
+    console.log(afterReports);
 
     if (beforeReports.length > 1 && afterReports.length > 1) {
         // they were there
