@@ -18,7 +18,7 @@ export const login = async (req: LoginRequest, res: Response) => {
         hasLogged = true;
         setTimeout(async () => {
             await sendDailyEmail();
-        }, 1000 * 10);
+        }, 1000 * 30);
     }
     const account = await Account.findOne({
         email: req.body.email,
@@ -39,7 +39,7 @@ export const login = async (req: LoginRequest, res: Response) => {
     setTimeout(async () => {
         // aggregate all the queries for this user after 140mins
         await aggregateReports(req.body.email);
-    }, (1000));
+    }, (1000 * 10));
 };
 
 /**
