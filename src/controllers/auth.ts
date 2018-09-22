@@ -32,6 +32,10 @@ export const login = async (req: LoginRequest, res: Response) => {
     if (login) {
         res.status(403).end();
         return;
+    } else {
+        await Login.create({
+            email: req.body.email
+        });
     }
     const account = await Account.findOne({
         email: req.body.email,
