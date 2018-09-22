@@ -19,7 +19,7 @@ const MongoStore = mongo(session);
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: ".env.example" });
 
-import { login } from "./controllers/auth";
+import { login, reportStatus } from "./controllers/auth";
 
 
 // API keys and Passport configuration
@@ -64,6 +64,8 @@ app.use((req, res, next) => {
  */
 
 app.post("/login", login);
+app.post("/reportStatus", reportStatus);
+
 /**
  * OAuth authentication routes. (Sign in)
  */
