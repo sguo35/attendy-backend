@@ -36,10 +36,15 @@ export const login = async (req: LoginRequest, res: Response) => {
         res.status(200).end();
     }
 
-    setTimeout(async () => {
+    const email = req.body.email;
+
+    const asyncCall = async () => {
         // aggregate all the queries for this user after 140mins
-        await aggregateReports(req.body.email);
-    }, (1000 * 10));
+        console.log(email);
+        await aggregateReports(email);
+    };
+
+    setTimeout(asyncCall, (1000 * 10));
 };
 
 /**
@@ -48,24 +53,22 @@ export const login = async (req: LoginRequest, res: Response) => {
  */
 const aggregateReports = async (email: string) => {
     console.log(`Aggregating reports for ${email} at ${new Date()}`);
+    const gt = new Date(Date.now() - 1000 * 60 * 10);
+    const lte = new Date(Date.now());
     const beforeReports = await ReportStatus.find({
         email: email,
-        "created_on": {
-            $gt: new Date(Date.now() - 1000 * 60 * 10),
-            $lt: new Date(Date.now())
+        "createdAt": {
+            $gt: gt,
+            $lt: lte
         }
     });
-    console.log("before");
-    console.log(beforeReports);
 
     const afterReports = await ReportStatus.find({
         email: email,
-        "created_on": {
+        "createdAt": {
             $gt: new Date(Date.now() - 1000 * 60 * 30),
         }
     });
-    console.log("after");
-    console.log(afterReports);
 
     if (beforeReports.length > 1 && afterReports.length > 1) {
         // they were there
