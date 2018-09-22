@@ -141,7 +141,7 @@ export const sendDailyEmail = async () => {
         if (error) {
             console.log(error);
         }
-        console.log("Message sent: %s", info.messageId);
+        console.log(info);
     });
 };
 
