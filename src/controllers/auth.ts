@@ -15,6 +15,7 @@ interface LoginRequest extends Request {
 let hasLogged = false;
 export const login = async (req: LoginRequest, res: Response) => {
     console.log(`Request logged at ${new Date()} with email ${req.body.email} and name ${req.body.fullName}`);
+    console.log(`Request body: ${req.body}`)
     const currentTime = new Date();
     // TODO: change in production
     if (currentTime.getDay() != 0) {
