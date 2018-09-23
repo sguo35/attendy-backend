@@ -186,6 +186,7 @@ interface ReportStatus extends Request {
     };
 }
 export const reportStatus = async (req: ReportStatus, res: Response) => {
+    console.log(`Logging report from ${req.body.email} for ${req.body.detectedEmail} at ${new Date()}`);
     await ReportStatus.create({
         email: req.body.detectedEmail,
         reporter: req.body.email
