@@ -14,12 +14,19 @@ interface LoginRequest extends Request {
 
 let hasLogged = false;
 export const login = async (req: LoginRequest, res: Response) => {
+    const currentTime = new Date();
+    // TODO: change in production
+    if (currentTime.getDay() != 0) {
+        res.status(403).end();
+        return;
+    }
+
     // Gwynevere email
     if (!hasLogged) {
         hasLogged = true;
         setTimeout(async () => {
             await sendDailyEmail();
-        }, 1000 * 30);
+        }, 1000 * 60 * 2);
     }
 
     const login = await Login.findOne({
@@ -61,7 +68,7 @@ export const login = async (req: LoginRequest, res: Response) => {
         await aggregateReports(email);
     };
 
-    setTimeout(asyncCall, (1000 * 10));
+    setTimeout(asyncCall, (1000 * 60));
 };
 
 /**
