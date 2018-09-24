@@ -86,8 +86,8 @@ export const aggregateAll = async (req: Request, res: Response) => {
  */
 const aggregateReports = async (email: string) => {
     console.log(`Aggregating reports for ${email} at ${new Date()}`);
-    const gt = new Date(Date.now() - 1000 * 60 * 10);
-    const lte = new Date(Date.now());
+    const gt = new Date(Date.now() - 1000 * 60 * 130);
+    const lte = new Date(Date.now() - 1000 * 60 * 110);
     const beforeReports = await ReportStatus.find({
         email: email,
         "createdAt": {
@@ -134,7 +134,7 @@ export const sendDailyEmail = async () => {
     const titleArr = ["email", "full name"];
     let refDate = new Date("9/27/18");
     for (let i = 0; i < 10; i++) {
-        titleArr.push(`${refDate.getMonth()}/${refDate.getDate()}/${refDate.getFullYear()}`);
+        titleArr.push(`${refDate.getMonth() + 1}/${refDate.getDate()}/${refDate.getFullYear()}`);
         refDate = new Date(refDate.getTime() + 1000 * 60 * 60 * 24 * 7);
     }
     outArr.push(titleArr);
@@ -174,8 +174,8 @@ export const sendDailyEmail = async () => {
         ],
         from: "ugba196.mailer@gmail.com",
         to: "shiyuan.guo@berkeley.edu",
-        subject: `Attendance for ${(new Date()).getMonth()}/${(new Date()).getDate()}/${(new Date()).getFullYear()}`,
-        text: "Dear Gwynevere,\nThe attendance for today can be found below."
+        subject: `Attendance for ${(new Date()).getMonth() + 1}/${(new Date()).getDate()}/${(new Date()).getFullYear()}`,
+        text: "Dear Gwynevere,\n\nThe attendance for the class thus far can be found attached below."
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
