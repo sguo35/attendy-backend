@@ -15,20 +15,12 @@ interface LoginRequest extends Request {
 let hasLogged = false;
 export const login = async (req: LoginRequest, res: Response) => {
     console.log(`Request logged at ${new Date()} with email ${req.body.email} and name ${req.body.fullName}`);
-    console.log(`Request body: ${req.body}`)
+    console.log(`Request body: ${req.body}`);
     const currentTime = new Date();
     // TODO: change in production
     if (currentTime.getDay() != 0) {
         res.status(403).end();
         return;
-    }
-
-    // Gwynevere email
-    if (!hasLogged) {
-        hasLogged = true;
-        setTimeout(async () => {
-            await sendDailyEmail();
-        }, 1000 * 60 * 2);
     }
 
     const login = await Login.findOne({
@@ -62,17 +54,20 @@ export const login = async (req: LoginRequest, res: Response) => {
         });
         res.status(200).end();
     }
-
-    const email = req.body.email;
-
-    const asyncCall = async () => {
-        // aggregate all the queries for this user after 140mins
-        console.log(email);
-        await aggregateReports(email);
-    };
-
-    setTimeout(asyncCall, (1000 * 60));
 };
+
+
+const schedule = require("node-schedule");
+
+// 4:10 on every Thursday - 11PM UTC is 4PM PST
+schedule.scheduleJob("10 23 * * 4", async () => {
+    const accounts = await Account.find();
+    accounts.map(async (account) => {
+        const acc = <AccountModel> account;
+        await aggregateReports(acc.email);
+    });
+    await sendDailyEmail();
+});
 
 /**
  * Aggregates the reports for the user with `email`
