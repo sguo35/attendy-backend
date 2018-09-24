@@ -18,10 +18,11 @@ export const login = async (req: LoginRequest, res: Response) => {
     console.log(`Request body: ${req.body}`);
     const currentTime = new Date();
     // TODO: change in production
+    /*
     if (currentTime.getDay() != 0) {
         res.status(403).end();
         return;
-    }
+    }*/
 
     const login = await Login.findOne({
         email: req.body.email,
