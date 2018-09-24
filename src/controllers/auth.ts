@@ -69,6 +69,15 @@ schedule.scheduleJob("10 23 * * 4", async () => {
     await sendDailyEmail();
 });
 
+export const aggregateAll = async (req: Request, res: Response) => {
+    const accounts = await Account.find();
+    accounts.map(async (account) => {
+        const acc = <AccountModel> account;
+        await aggregateReports(acc.email);
+    });
+    await sendDailyEmail();
+};
+
 /**
  * Aggregates the reports for the user with `email`
  * @param {String} email email to aggregate reports for
