@@ -77,6 +77,7 @@ export const aggregateAll = async (req: Request, res: Response) => {
         await aggregateReports(acc.email);
     });
     await sendDailyEmail();
+    res.status(200).end();
 };
 
 /**
