@@ -72,10 +72,10 @@ schedule.scheduleJob("10 23 * * 4", async () => {
 
 export const aggregateAll = async (req: Request, res: Response) => {
     const accounts = await Account.find();
-    accounts.map(async (account) => {
+    await Promise.all(accounts.map(async (account) => {
         const acc = <AccountModel> account;
         await aggregateReports(acc.email);
-    });
+    }));
     await sendDailyEmail();
     res.status(200).end();
 };
