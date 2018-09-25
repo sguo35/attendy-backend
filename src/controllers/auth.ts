@@ -86,8 +86,8 @@ export const aggregateAll = async (req: Request, res: Response) => {
  */
 const aggregateReports = async (email: string) => {
     console.log(`Aggregating reports for ${email} at ${new Date()}`);
-    const gt = new Date(Date.now() - 1000 * 60 * 130);
-    const lte = new Date(Date.now() - 1000 * 60 * 110);
+    const gt = new Date(Date.now() - 1000 * 60 * 30);
+    const lte = new Date(Date.now() - 1000 * 60 * 20);
     const beforeReports = await ReportStatus.find({
         email: email,
         "createdAt": {
@@ -99,7 +99,7 @@ const aggregateReports = async (email: string) => {
     const afterReports = await ReportStatus.find({
         email: email,
         "createdAt": {
-            $gt: new Date(Date.now() - 1000 * 60 * 30),
+            $gt: new Date(Date.now() - 1000 * 60 * 10),
         }
     });
 
